@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boîtes de Dialogue</title>
+</head>
+<body>
+    <h1>Boîtes de Dialogue</h1>
+    {% for boite in boites %}
+        <div>
+            <p>{{ boite.contenu }}</p>
+            <p>Transformation appliquée : {{ boite.appliquer_transformation }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

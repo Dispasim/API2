@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boîtes de Dialogue</title>
+</head>
+<body>
+    <h1>Boîtes de Dialogue</h1>
+    
+    <!-- Affichage des boîtes de dialogue initiales -->
+    <form method="post" id="boites-form">
+        {% csrf_token %}
+        {% for boite in boites %}
+            <div>
+                <p>{{ boite.contenu }}</p>
+                <input type="checkbox" name="boites_selectionnees" value="{{ boite.id }}">
+            </div>
+        {% endfor %}
+        <input type="button" value="Confirmer" onclick="afficherFormulaireConfirmation()">
+    </form>
+
+    <!-- Formulaire de confirmation (initialement masqué) -->
+    <form method="post" id="confirmation-form" style="display:none;">
+        <!-- Incluez les champs supplémentaires nécessaires pour la confirmation -->
+        {% csrf_token %}
+        <input type="submit" value="Confirmer">
+    </form>
+
+    <script>
+        function afficherFormulaireConfirmation() {
+            document.getElementById("boites-form").style.display = "none";
+            document.getElementById("confirmation-form").style.display = "block";
+        }
+    </script>
+</body>
+</html>

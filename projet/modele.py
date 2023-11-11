@@ -1,0 +1,2 @@
+class modele():
+    pass
