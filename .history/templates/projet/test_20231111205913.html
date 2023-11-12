@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boîtes de Dialogue</title>
+</head>
+<body>
+    <h1>Boîtes de Dialogue</h1>
+    <input type="number" id="nombre_boites" name="nombre_boites" value="{{ nombre_boites }}">
+    <div id="boites-container"></div>
+
+    <script>
+        // Fonction pour générer les textarea en fonction du nombre spécifié
+        function genererBoites() {
+            // Récupérer la valeur de l'input
+            var nombreBoites = document.getElementById("nombre_boites").value;
+
+            // Sélectionner le conteneur où les textarea seront ajoutés
+            var conteneur = document.getElementById("boites-container");
+
+            // Effacer le contenu existant du conteneur
+            conteneur.innerHTML = '';
+
+            // Générer et ajouter les textarea en fonction du nombre spécifié
+            for (var i = 0; i < nombreBoites; i++) {
+                var textarea = document.createElement("textarea");
+                textarea.placeholder = "Boîte de dialogue " + (i + 1);
+                conteneur.appendChild(textarea);
+            }
+        }
+
+        // Ajouter un écouteur d'événements pour détecter les changements dans l'input
+        document.getElementById("nombre_boites").addEventListener("input", genererBoites);
+
+        // Appeler la fonction initiale pour générer les textarea en fonction de la valeur initiale
+        genererBoites();
+    </script>
+</body>
+</html>

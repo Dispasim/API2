@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boîtes de Dialogue</title>
+    <style>
+        /* Style pour que les textarea apparaissent les unes en dessous des autres */
+        #boites-container textarea {
+            display: block;
+            margin-bottom: 100px; /* Ajouter une marge entre chaque boîte de dialogue */
+        }
+    </style>
+</head>
+<body>
+    <h1>Boîtes de Dialogue</h1>
+    <input type="number" id="nombre_boites" name="nombre_boites" value="{{ nombre_boites }}">
+    <div id="boites-container"></div>
+
+    <script>
+        function genererBoites() {
+            var nombreBoites = document.getElementById("nombre_boites").value;
+            var conteneur = document.getElementById("boites-container");
+            conteneur.innerHTML = '';
+
+            for (var i = 0; i < nombreBoites; i++) {
+                var textarea = document.createElement("textarea");
+                textarea.placeholder = "Boîte de dialogue " + (i + 1);
+                conteneur.appendChild(textarea);
+            }
+        }
+
+        document.getElementById("nombre_boites").addEventListener("input", genererBoites);
+        genererBoites();
+    </script>
+</body>
+</html>
+

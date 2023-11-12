@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Formulaire d'envoi à l'API</title>
+</head>
+<body>
+
+    <h2>Saisissez le texte dans les zones de texte :</h2>
+
+    <form id="myForm">
+        <textarea name="textarea1" rows="4" cols="50" placeholder="Texte 1"></textarea><br>
+        <textarea name="textarea2" rows="4" cols="50" placeholder="Texte 2"></textarea><br>
+        <!-- Ajoutez plus de textarea au besoin -->
+
+        <button type="button" onclick="envoyerAPI()">Confirmer</button>
+    </form>
+
+    <script>
+        function envoyerAPI() {
+            // Récupérer le formulaire
+            var formulaire = document.getElementById("myForm");
+
+            // Créer un objet FormData pour rassembler les données du formulaire
+            var formData = new FormData(formulaire);
+
+            // Remplacer l'URL de l'API par votre propre URL
+            var urlAPI = "https://exemple.com/votre-api-endpoint";
+
+            // Effectuer la requête AJAX vers l'API
+            fetch(urlAPI, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Réponse de l\'API :', data);
+                // Ajouter ici toute logique de gestion de la réponse de l'API
+            })
+            .catch(error => console.error('Erreur lors de la requête vers l\'API :', error));
+        }
+    </script>
+
+</body>
+</html>

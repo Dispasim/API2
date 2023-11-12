@@ -12,6 +12,6 @@ urlpatterns = [
     #path('test/',TemplateView.as_view(template_name="projet/test.html")),
     path("test/", index, name="index"),
     path('test2/',TemplateView.as_view(template_name="projet/test2.html")),
-    path('post/', post_view, name='post'),
+    path('post_view/', post_view, name='post'),
    
 ]
