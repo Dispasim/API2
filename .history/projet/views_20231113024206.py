@@ -48,7 +48,7 @@ def create_subtrade(request):
         if (form.is_valid()):
             text = form.cleaned_data["text_subtrade"]
             subtrade_ =  subtrade(text_subtrade = text)
-            subtrade_.save()
+            subtrade.save()
             return HttpResponse("Succès")
     form = CreateSubtradeForm()
     return render(request, "projet/index.html", {"form" : form})

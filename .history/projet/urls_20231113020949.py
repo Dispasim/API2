@@ -4,7 +4,6 @@ from django.views.generic import TemplateView
 from . import views
 from .views import index
 from .views import post_view
-from .views import create_subtrade
 
 app_name = 'projet'
 
@@ -14,6 +13,5 @@ urlpatterns = [
     path("test/", index, name="index"),
     path('test2/',TemplateView.as_view(template_name="projet/test2.html")),
     path('post_view/', post_view, name='post_view'),
-    path('create_subtrade/', create_subtrade, name='create_subtrade')
    
 ]

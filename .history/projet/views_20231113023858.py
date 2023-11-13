@@ -5,7 +5,7 @@ from .modele import modele
 import requests
 from django.urls import reverse
 from django.http import HttpResponse
-from .models import subtrade
+from .views import subtrade
 from .forms import CreateSubtradeForm
 
 
@@ -47,8 +47,8 @@ def create_subtrade(request):
         form = CreateSubtradeForm(request.POST)
         if (form.is_valid()):
             text = form.cleaned_data["text_subtrade"]
-            subtrade_ =  subtrade(text_subtrade = text)
-            subtrade_.save()
+            subtrade =  subtrade(text_subtrade = text)
+            subtrade.save()
             return HttpResponse("Succès")
     form = CreateSubtradeForm()
     return render(request, "projet/index.html", {"form" : form})

@@ -14,7 +14,6 @@
 </head>
 <body>
     <form method="post" action="/post_view/">
-        {% csrf_token %}
         <h1>Boîtes de Dialogue</h1>
         <input type="number" id="nombre_boites" name="nombre_boites" value="{{ nombre_boites }}">
         <div id="boites-container"></div>

@@ -4,7 +4,6 @@ from django.views.generic import TemplateView
 from . import views
 from .views import index
 from .views import post_view
-from .views import create_subtrade
 
 app_name = 'projet'
 

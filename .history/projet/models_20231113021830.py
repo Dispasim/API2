@@ -36,7 +36,7 @@ class Order(models.Model):
     #category = models.ForeignKey(Category, on_delete=models.PROTECT, default = 1)
 
 class subtrade(models.Model):
-    text_subtrade = models.CharField(max_length=100,null = True, blank = True)
+    text_subtrade = models.TextField(null = True, blank = True)
     #timestamp = models.DateTimeField(default=timezone.now,null=True)
     #objects = models.Manager()
     
