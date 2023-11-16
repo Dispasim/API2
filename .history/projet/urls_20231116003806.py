@@ -11,5 +11,4 @@ urlpatterns = [
     path("test/", test, name="index"),
     path('', create_subtrade, name='create_subtrade'),
     path('test2/',TemplateView.as_view(template_name="projet/test2.html")),
-    path('test3/',TemplateView.as_view(template_name="projet/test3.html")),
 ]

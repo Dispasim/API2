@@ -20,7 +20,6 @@ class OrderDetail(generics.RetrieveDestroyAPIView):
     
 
 class ApplyIaView(APIView):
-    #permission_classes = (permissions.AllowAny,)
     def post(self,request):
         texte = request.data.get("text")
 
@@ -29,7 +28,6 @@ class ApplyIaView(APIView):
 
         serializer = OrderSerializer(order)
         return Response(serializer.data,status= status.HTTP_201_CREATED)
-        #return render(request, "projet/test3.html", {"data": serializer.data})
 
 
 

@@ -28,8 +28,8 @@ class ApplyIaView(APIView):
         order.save()
 
         serializer = OrderSerializer(order)
-        return Response(serializer.data,status= status.HTTP_201_CREATED)
-        #return render(request, "projet/test3.html", {"data": serializer.data})
+        #return Response(serializer.data,status= status.HTTP_201_CREATED)
+        return render(request, "projet/test3.html", {"data": serializer.data})
 
 
 

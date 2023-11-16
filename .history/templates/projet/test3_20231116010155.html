@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Afficher des tableaux provenant d'une API</title>
+</head>
+<body>
+  <h1>Tableaux de l'API</h1>
+  <div id="tableaux"></div>
+
+  <script>
+    function afficherTableaux(tableaux) {
+      const tableauxDiv = document.getElementById('tableaux');
+      tableauxDiv.innerHTML = ''; // Effacer le contenu précédent
+
+      if (tableaux.length === 0) {
+        tableauxDiv.innerHTML = 'Aucun tableau disponible.';
+        return;
+      }
+
+      const ul = document.createElement('ul');
+
+      tableaux.forEach((tableau, index) => {
+        const li = document.createElement('li');
+        li.textContent = `Tableau ${index + 1}: ${JSON.stringify(tableau)}`;
+        ul.appendChild(li);
+      });
+
+      tableauxDiv.appendChild(ul);
+    }
+
+    function envoyerTexteAPI() {
+      const texte = document.getElementById('textToSend').value;
+      const data = { text: texte };
+
+      fetch('http://127.0.0.1:8000/api/transform', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Échec de la requête');
+      })
+      .then(data => {
+        console.log('Données reçues de l\'API :', data);
+        afficherTableaux(data); // Appel de la fonction pour afficher les tableaux
+      })
+      .catch(error => {
+        console.error('Erreur :', error);
+        // Gérer les erreurs d'envoi
+      });
+    }
+  </script>
+</body>
+</html>

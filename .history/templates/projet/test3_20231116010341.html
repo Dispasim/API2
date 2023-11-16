@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Envoyer du texte à une API et afficher la réponse</title>
+</head>
+<body>
+  <h1>Envoyer du texte à une API</h1>
+  <textarea id="textToSend" rows="4" cols="50"></textarea><br><br>
+  <button onclick="envoyerTexteAPI()">Envoyer</button><br><br>
+
+  <h2>Réponse de l'API</h2>
+  <div id="responseTable"></div>
+
+  <script>
+    function afficherReponse(reponse) {
+      const responseTable = document.getElementById('responseTable');
+      responseTable.innerHTML = ''; // Effacer le contenu précédent
+
+      if (reponse.length === 0) {
+        responseTable.innerHTML = 'Aucune donnée disponible.';
+        return;
+      }
+
+      const table = document.createElement('table');
+      table.border = '1';
+
+      // En-tête du tableau avec les clés du premier élément
+      const keys = Object.keys(reponse[0]);
+      const thead = document.createElement('thead');
+      const trHead = document.createElement('tr');
+      keys.forEach(key => {
+        const th = document.createElement('th');
+        th.textContent = key;
+        trHead.appendChild(th);
+      });
+      thead.appendChild(trHead);
+      table.appendChild(thead);
+
+      // Corps du tableau avec les données
+      const tbody = document.createElement('tbody');
+      reponse.forEach(item => {
+        const tr = document.createElement('tr');
+        keys.forEach(key => {
+          const td = document.createElement('td');
+          td.textContent = item[key];
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+
+      responseTable.appendChild(table);
+    }
+
+    function envoyerTexteAPI() {
+      const texte = document.getElementById('textToSend').value;
+      const data = { text: texte };
+
+      fetch('http://votre_domaine.com/votre_endpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Échec de la requête');
+      })
+      .then(data => {
+        console.log('Données reçues de l\'API :', data);
+        afficherReponse(data);
+      })
+      .catch(error => {
+        console.error('Erreur :', error);
+        // Gérer les erreurs d'envoi
+      });
+    }
+  </script>
+</body>
+</html>
+

@@ -19,17 +19,16 @@ class OrderDetail(generics.RetrieveDestroyAPIView):
     
     
 
-class ApplyIaView(APIView):
+class ApplyIaView(generics.CreateAPIView):
     #permission_classes = (permissions.AllowAny,)
     def post(self,request):
-        texte = request.data.get("text")
+        texte = request.data.get("detail")
 
         order = transform(texte)
         order.save()
 
         serializer = OrderSerializer(order)
         return Response(serializer.data,status= status.HTTP_201_CREATED)
-        #return render(request, "projet/test3.html", {"data": serializer.data})
 
 
 

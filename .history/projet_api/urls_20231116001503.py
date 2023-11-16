@@ -6,6 +6,6 @@ app_name = 'projet_api'
 
 urlpatterns = [
     path('<int:pk>/',OrderDetail.as_view(),name='detailcreate'),
-    path('',OrderList.as_view(), name='listcreate'),
-    path("transform", ApplyIaView.as_view(), name="transform"),
+    path('',OrderList.as_view(), name='listcreate')
+    path("trasnform", ApplyIaView.as_view(), name="transform")
 ]
