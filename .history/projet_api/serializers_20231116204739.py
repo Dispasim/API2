@@ -4,5 +4,5 @@ from projet.models import Order
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = ("text","isin","trade_date","settlement_date","primary_brocker","sens","trader","price","size","price_type","currency","clean_dirty")#ajouter peut etre user
+        fields = ("text","isin","trade_date","settlement_date","primary_brocker","sens","trader","price","size","price_type","currency","clean_dirty")#ajouter status
         #fields = ("text","user")
