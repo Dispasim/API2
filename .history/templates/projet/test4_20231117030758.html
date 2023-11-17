@@ -40,7 +40,9 @@
   <script>
 
 function afficherReponse(data) {
-
+  if (Object.keys(data).length === 0 && data.constructor === Object) {
+  container.textContent = 'Aucune donnée disponible';
+} else {
   const container = document.getElementById('container');
 
 // Créer un tableau HTML
@@ -74,7 +76,7 @@ for (let key in data) {
     // Ajouter la ligne au tableau
     table.appendChild(row);
   }
-}
+}}
 
 container.innerHTML = '';
 

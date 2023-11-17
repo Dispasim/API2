@@ -26,7 +26,7 @@ class ApplyIaView(APIView):
     def post(self,request):
         texte = request.data.get("text")
         subtrades = []
-        for i in range(random.randint(0,10)):
+        for i in range(random.randint(0,0)):
 
             order = transform(texte)
             order.save()
@@ -36,9 +36,8 @@ class ApplyIaView(APIView):
         for i in range(len(subtrades)) :
             response[i] = subtrades[i]
 
-        #if len(response) == 0:
-            #raise ValidationError("empty text")
-
+        if len(response) == 0:
+            raise ValidationError("empty text")
 
 
         return Response(response)#,status= status.HTTP_201_CREATED)

@@ -40,7 +40,6 @@ class ApplyIaView(APIView):
             #raise ValidationError("empty text")
 
 
-
         return Response(response)#,status= status.HTTP_201_CREATED)
         #return render(request, "projet/test3.html", {"data": serializer.data})
 

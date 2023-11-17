@@ -1,21 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <style>
-  table {
-    border-collapse: collapse;
-    width: 120%;
-  }
-  
-  th, td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  </style>
 <head>
   <meta charset="UTF-8">
   <title>Envoyer du texte à une API et afficher la réponse</title>
@@ -27,7 +11,7 @@
 
   <h2>Réponse de l'API</h2>
   <div id="responseTable"></div>
-
+  
 <table border="1">
     <thead>
       <tr id="keysRow"></tr>
@@ -36,80 +20,22 @@
       <tr id="valuesRows"></tr>
     </tbody>
 </table>
-<div id="container"></div>
+
   <script>
+function afficherReponse(reponses) {
+  const responseTable = document.getElementById('responseTable');
+  responseTable.innerHTML = ''; // Effacer le contenu précédent
 
-function afficherReponse(data) {
-
-  const container = document.getElementById('container');
-
-// Créer un tableau HTML
-const table = document.createElement('table');
-table.classList.add('styled-table');
-// Créer la première ligne du tableau avec les clés
-const keys = Object.keys(data[0]);
-const headerRow = document.createElement('tr');
-
-keys.forEach(key => {
-  const th = document.createElement('th');
-  th.textContent = key;
-  headerRow.appendChild(th);
-});
-
-// Ajouter la première ligne au tableau
-table.appendChild(headerRow);
-
-// Ajouter les données au tableau
-for (let key in data) {
-  if (data.hasOwnProperty(key)) {
-    const item = data[key];
-    const row = document.createElement('tr');
-
-    keys.forEach(key => {
-      const cell = document.createElement('td');
-      cell.textContent = item[key];
-      row.appendChild(cell);
-    });
-
-    // Ajouter la ligne au tableau
-    table.appendChild(row);
+  if (reponses.length === 0) {
+    responseTable.innerHTML = 'Aucune donnée disponible.';
+    return;
   }
-}
 
-container.innerHTML = '';
+  var keysRow = document.getElementById('keysRow');
+  var valuesRows = document.getElementById('valuesRows');
+  keysRow.innerHTML = ''; // Effacer le contenu précédent
+  valuesRows.innerHTML = ''; // Effacer le contenu précédent
 
-// Ajouter le tableau au conteneur HTML
-container.appendChild(table);
-
-
-/*    
-function afficherReponse(data) {
-  const container = document.getElementById('container');
-
-// Parcourir le JSON et afficher les éléments
-for (let key in data) {
-  if (data.hasOwnProperty(key)) {
-    const item = data[key];
-    const element = document.createElement('div');
-    
-    // Construire le contenu à afficher pour chaque élément
-    let content = '';
-    for (let prop in item) {
-      if (item.hasOwnProperty(prop)) {
-        content += `<strong>${prop}:</strong> ${item[prop]}<br>`;
-      }
-    }
-    
-    // Ajouter le contenu à l'élément div créé
-    element.innerHTML = content;
-    
-    // Ajouter l'élément div au conteneur HTML
-    container.appendChild(element);
-  }
-}
-*/
-  
-/*
   reponses.forEach((reponse, index) => {
     var keysArray = [];
     var valuesArray = [];
@@ -127,7 +53,7 @@ for (let key in data) {
 
     keysRow.appendChild(newKeysRow);
     valuesRows.appendChild(newValuesRow);
-  });*/
+  });
 }
 
     /*

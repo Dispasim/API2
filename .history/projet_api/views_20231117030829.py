@@ -26,7 +26,7 @@ class ApplyIaView(APIView):
     def post(self,request):
         texte = request.data.get("text")
         subtrades = []
-        for i in range(random.randint(0,10)):
+        for i in range(random.randint(0,0)):
 
             order = transform(texte)
             order.save()

@@ -3,7 +3,7 @@
   <style>
   table {
     border-collapse: collapse;
-    width: 120%;
+    width: 100%;
   }
   
   th, td {
@@ -40,7 +40,6 @@
   <script>
 
 function afficherReponse(data) {
-
   const container = document.getElementById('container');
 
 // Créer un tableau HTML
@@ -75,8 +74,6 @@ for (let key in data) {
     table.appendChild(row);
   }
 }
-
-container.innerHTML = '';
 
 // Ajouter le tableau au conteneur HTML
 container.appendChild(table);
