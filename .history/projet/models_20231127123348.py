@@ -28,8 +28,8 @@ class Order(models.Model):
     price_type = models.CharField(max_length=10,null=True)
     currency = models.CharField(max_length=10,null=True)
     clean_dirty = models.CharField(max_length=100,null=True)
-    TimeStamp = models.DateTimeField(default=timezone.now,null=True)
-    
+    Timestamp = models.DateTimeField(default=timezone.now,null=True)
+    user = models.ForeignKey(User, on_delete=models.PROTECT,null=True)#pas nécessaire 
     
     objects = models.Manager()
     orderobjects =  OrderObject()

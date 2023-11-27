@@ -10,5 +10,5 @@ urlpatterns = [
     
     
 
-    path('',TemplateView.as_view(template_name="projet/template.html")),
+    path('test4/',TemplateView.as_view(template_name="projet/test4.html")),
 ]
